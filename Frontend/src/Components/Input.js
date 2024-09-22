@@ -60,7 +60,7 @@ function Input() {
   const getFilteredData = () => {
     if (!response) return {};
 
-    const { numbers = [], alphabets = [], highest_alphabet = [] } = response;
+    const { numbers = [], alphabets = [], highest_lowercase_alphabet = [] } = response;
 
     let filteredNumbers = [];
     let filteredAlphabets = [];
@@ -75,7 +75,7 @@ function Input() {
     }
 
     if (selectedValues.includes('Highest Alpabets')) {
-      highestAlphabet = highest_alphabet;
+      highestAlphabet = highest_lowercase_alphabet;
     }
 
     return { filteredNumbers, filteredAlphabets, highestAlphabet };
@@ -99,7 +99,7 @@ function Input() {
       {validFormat && (
         <div>
           <label htmlFor="multi-select">Choose an option:</label>
-          <select id="multi-select" value={selectedValues} onChange={handleChange} multiple>
+          <select id="multiple-select" value={selectedValues} onChange={handleChange} multiple>
             <option value="">--Select an option--</option>
             <option value="Numbers">Numbers</option>
             <option value="Alphabets">Alphabets</option>
@@ -129,7 +129,7 @@ function Input() {
                 )}
                 {selectedValues.includes('Highest Alpabets') && (
                   <>
-                    <h4>Highest Alphabet:</h4>
+                    <h4>Highest Lowercase Alphabet:</h4>
                     <pre>{JSON.stringify(highestAlphabet, null, 2)}</pre>
                   </>
                 )}
