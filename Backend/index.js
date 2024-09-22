@@ -4,8 +4,7 @@ const cors = require('cors');
 const app = express();
 const port = 3001;
 
-app.use(cors()); // Enable CORS
-app.use(bodyParser.json());
+
 
 const base64MimeType = (encoded) =>{
   let result = null;
@@ -24,6 +23,9 @@ const getBase64FileSize = (base64String) => {
   return (sizeInBytes / 1024).toFixed(2); 
 };
 // POST method endpoint to handle JSON input
+app.use(cors()); // Enable CORS
+app.use(bodyParser.json());
+
 app.get('/',(req,res)=>{
   res.send('Hello World!');
 })
