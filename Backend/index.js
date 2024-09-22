@@ -14,7 +14,7 @@ const base64MimeType = (encoded) =>{
   
   const mime = encoded.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
   if(mime && mime.length)
-    return mime[1];
+    result =  mime[1];
   return result;
 };
 
