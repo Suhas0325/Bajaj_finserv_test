@@ -56,6 +56,7 @@ app.post('/bfhl', async (req, res) => {
     const highestLowerCaseAlphabet = alphabets
     .filter((char) => char >= 'a' && char <= 'z') 
     .reduce((highest, current) => current > highest ? current : highest, ' ');
+    if(file_b64){
     const response = {
       status: 'success',
       user_id: 'suhas_mukku_25092003',
@@ -67,9 +68,24 @@ app.post('/bfhl', async (req, res) => {
       file_valid: fileInfo.file_valid,
       file_mime_type: fileInfo.file_mime_type,
       file_size_kb: fileInfo.file_size_kb
-    };
-
+    }
     res.json(response);
+  }
+  else{
+    const response = {
+      status: 'success',
+      user_id: 'suhas_mukku_25092003',
+      email: 'suhas_mukku@srmap.edu.in',
+      roll_number: 'AP21110011362',
+      numbers: numbers,
+      alphabets: alphabets,
+      highest_lowercase_alphabet:highestLowerCaseAlphabet ? [highestLowerCaseAlphabet] : [],
+      file_valid: false,
+      
+  }
+  res.json(response);
+  }
+   
   } else {
     res.status(400).json({ error: 'Invalid JSON format. "data" key with an array value is required.' });
   }
